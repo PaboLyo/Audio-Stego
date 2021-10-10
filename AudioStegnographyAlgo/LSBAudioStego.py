@@ -8,12 +8,15 @@ class LSBAudioStego(AudioStego):
     def saveToLocation(self, audioArray, location):
         # save to dir as output-lsb
         dir = os.path.dirname(location)
-        self.newAudio = wave.open(dir + "/output-lsb.wav", 'wb')
+        print(dir+"/Output")
+        #self.newAudio = wave.open("Output\output-lsb.wav", 'wb')
+        self.newAudio = wave.open(dir + "/Output/output-lsb.wav", 'wb')
         self.newAudio.setparams(self.audio.getparams())
         self.newAudio.writeframes(audioArray)
         self.newAudio.close()
         self.audio.close()
-        return dir + "/output-lsb.wav"
+        return dir + "/Output/output-lsb.wav"
+        #return "Output\output-lsb.wav"
 
     def encodeAudio(self, audioLocation, stringToEncode) -> str:
         # convert to array
